@@ -15,33 +15,33 @@
             <p>Total Records Loaded</p>
         </div>
         <div class="stat-item">
-            <h3 style="color: var(--color-fake);">{{ stats.fake_count|default('23,481') }}</h3>
+            <h3 style="color: var(--red);">{{ stats.fake_count|default('23,481') }}</h3>
             <p>Fake News (Label 0)</p>
         </div>
         <div class="stat-item">
-            <h3 style="color: var(--color-real);">{{ stats.real_count|default('21,417') }}</h3>
+            <h3 style="color: var(--green);">{{ stats.real_count|default('21,417') }}</h3>
             <p>Real News (Label 1)</p>
         </div>
         <div class="stat-item">
-            <h3 style="color: var(--accent-purple);">80% / 20%</h3>
+            <h3 style="color: var(--accent);">80% / 20%</h3>
             <p>Train / Test Split Ratio</p>
         </div>
     </div>
 
     <!-- Dataset Attributes Table & Split Details -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-bottom: 2.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; margin-bottom: 2.5rem;">
         <!-- Distribution Card -->
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>📊</span> Dataset Breakdown</h2>
-                <span class="badge-tag" style="margin-bottom: 0;">Kaggle ISOT Dataset</span>
+                <h2 class="card-title"><i data-lucide="bar-chart-3"></i> Dataset Breakdown</h2>
+                <span class="badge-tag" style="margin-bottom: 0;">ISOT Dataset</span>
             </div>
 
             <table class="custom-table">
                 <tbody>
                     <tr>
                         <td><strong>Dataset Name</strong></td>
-                        <td>Fake and Real News Dataset (Clement Bisaillon)</td>
+                        <td>Fake and Real News Dataset</td>
                     </tr>
                     <tr>
                         <td><strong>Primary Source</strong></td>
@@ -49,11 +49,11 @@
                     </tr>
                     <tr>
                         <td><strong>Total Fake News Records</strong></td>
-                        <td><span style="color: var(--color-fake); font-weight: 700;">{{ stats.fake_count|default('23,481') }} ({{ stats.fake_pct|default('52.3') }}%)</span></td>
+                        <td><span style="color: var(--red); font-weight: 700;">{{ stats.fake_count|default('23,481') }} ({{ stats.fake_pct|default('52.3') }}%)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Total Real News Records</strong></td>
-                        <td><span style="color: var(--color-real); font-weight: 700;">{{ stats.real_count|default('21,417') }} ({{ stats.real_pct|default('47.7') }}%)</span></td>
+                        <td><span style="color: var(--green); font-weight: 700;">{{ stats.real_count|default('21,417') }} ({{ stats.real_pct|default('47.7') }}%)</span></td>
                     </tr>
                     <tr>
                         <td><strong>Stratified Training Set (80%)</strong></td>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td><strong>Random State Seed</strong></td>
-                        <td><code>random_state=42, stratify=y</code></td>
+                        <td><code style="font-family: var(--font-mono); background: var(--bg-muted); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.8rem;">random_state=42, stratify=y</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -74,41 +74,41 @@
         <!-- Preprocessing Pipeline Info -->
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>🧹</span> Data Preprocessing Pipeline</h2>
+                <h2 class="card-title"><i data-lucide="sparkles"></i> Data Preprocessing Pipeline</h2>
                 <span class="badge-tag" style="margin-bottom: 0;">Automated NLP</span>
             </div>
 
             <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem;">
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Missing Value Removal:</strong> Strips empty rows across title and article text fields.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Deduplication:</strong> Eliminates duplicate articles to prevent data leakage between splits.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Case Normalization:</strong> Transforms all characters to lowercase for uniform representation.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Punctuation & Special Characters:</strong> Regular expression stripping of emojis and punctuation.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>URL Stripping:</strong> Removes <code>http://</code>, <code>https://</code> and <code>www</code> hyperlink anchors.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Stop Words Removal:</strong> Eliminates non-informative English stop words.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>Text Fusion:</strong> Concatenates headline title and body text into a unified representation.</div>
                 </li>
                 <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
-                    <span style="color: var(--accent-cyan); font-weight: bold;">✔</span>
+                    <i data-lucide="check" style="width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px;"></i>
                     <div><strong>TF-IDF Vectorization:</strong> Extracts 5,000 top n-gram features (unigrams & bigrams).</div>
                 </li>
             </ul>
@@ -118,15 +118,15 @@
     <!-- Sample Data Preview -->
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title"><span>👀</span> Dataset Sample Preview (Top Records)</h2>
-            <span class="badge-tag" style="margin-bottom: 0;">Cleaned Representation</span>
+            <h2 class="card-title"><i data-lucide="table"></i> Dataset Sample Preview</h2>
+            <span class="badge-tag" style="margin-bottom: 0;">Sample Records</span>
         </div>
 
         <div class="table-responsive">
             <table class="custom-table">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">Label</th>
+                        <th style="width: 90px;">Label</th>
                         <th style="width: 250px;">Sample Title</th>
                         <th>Sample Text Preview</th>
                         <th style="width: 120px;">Category</th>
@@ -135,27 +135,27 @@
                 <tbody>
                     <tr>
                         <td><span class="model-pred-pill real" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">1 (REAL)</span></td>
-                        <td>As U.S. budget fight looms, Republicans flip their fiscal script</td>
+                        <td style="font-weight: 500;">As U.S. budget fight looms, Republicans flip their fiscal script</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">WASHINGTON (Reuters) - The head of a conservative Republican faction in the U.S. Congress, who voted this month for huge tax cuts, called on lawmakers to prioritize fiscal discipline...</td>
-                        <td>politicsNews</td>
+                        <td><span class="pill pill-blue">politicsNews</span></td>
                     </tr>
                     <tr>
                         <td><span class="model-pred-pill fake" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">0 (FAKE)</span></td>
-                        <td>Donald Trump Sends Out Embarrassing New Year’s Eve Message; Trying To Sound Like A 'Winner'</td>
+                        <td style="font-weight: 500;">Donald Trump Sends Out Embarrassing New Year’s Eve Message</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">Donald Trump just couldn t wish all Americans a happy New Year and leave it at that. Instead, he had to sound like an insecure juvenile who is frantically seeking validation from strangers...</td>
-                        <td>News</td>
+                        <td><span class="pill pill-gray">News</span></td>
                     </tr>
                     <tr>
                         <td><span class="model-pred-pill real" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">1 (REAL)</span></td>
-                        <td>U.S. military to accept transgender recruits on Monday: Pentagon</td>
+                        <td style="font-weight: 500;">U.S. military to accept transgender recruits on Monday: Pentagon</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">WASHINGTON (Reuters) - Transgender people will be allowed for the first time to enlist in the U.S. military starting on Monday as ordered by federal courts, the Pentagon said on Friday...</td>
-                        <td>politicsNews</td>
+                        <td><span class="pill pill-blue">politicsNews</span></td>
                     </tr>
                     <tr>
                         <td><span class="model-pred-pill fake" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">0 (FAKE)</span></td>
-                        <td>Drunk Bragging Trump Staffer Started Russian Collusion Investigation</td>
+                        <td style="font-weight: 500;">Drunk Bragging Trump Staffer Started Investigation</td>
                         <td style="color: var(--text-secondary); font-size: 0.85rem;">House Intelligence Committee Chairman Devin Nunes is having a bad day. It turns out that the entire investigation into Donald Trump’s collusion with Russia was not started by a dossier...</td>
-                        <td>News</td>
+                        <td><span class="pill pill-gray">News</span></td>
                     </tr>
                 </tbody>
             </table>

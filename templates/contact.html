@@ -5,29 +5,29 @@
 <section>
     <div style="margin-bottom: 2rem;">
         <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.3rem;">Contact & Project Details</h1>
-        <p style="color: var(--text-secondary);">TruthLens – College Final-Year Machine Learning Research & Demonstration Project.</p>
+        <p style="color: var(--text-secondary);">TruthLens – Machine Learning Research & Demonstration Project.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem;">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>📬</span> Contact Information</h2>
+                <h2 class="card-title"><i data-lucide="info"></i> Project Information</h2>
             </div>
             <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.92rem;">
                 Have questions or feedback regarding the Machine Learning models, dataset processing, or implementation? Feel free to reach out.
             </p>
 
             <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem;">
-                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                    <strong style="color: var(--accent-cyan); display: block;">Project Repository</strong>
+                <div style="background: var(--bg-muted); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <strong style="color: var(--accent); display: block; margin-bottom: 0.2rem;">Project Repository</strong>
                     <span style="color: var(--text-secondary);">TruthLens: Multilingual Fake News Detection System</span>
                 </div>
-                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                    <strong style="color: var(--accent-blue); display: block;">Framework</strong>
-                    <span style="color: var(--text-secondary);">Flask 3.1 + Scikit-Learn 1.9 + Joblib</span>
+                <div style="background: var(--bg-muted); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <strong style="color: var(--accent); display: block; margin-bottom: 0.2rem;">Framework</strong>
+                    <span style="color: var(--text-secondary);">Flask + Scikit-Learn + Joblib + Vercel</span>
                 </div>
-                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                    <strong style="color: var(--accent-purple); display: block;">Supported Languages</strong>
+                <div style="background: var(--bg-muted); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <strong style="color: var(--accent); display: block; margin-bottom: 0.2rem;">Supported Languages</strong>
                     <span style="color: var(--text-secondary);">English, Tamil (தமிழ்), Hindi (हिन्दी), Telugu (తెలుగు), Kannada (ಕನ್ನಡ)</span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>✉️</span> Send a Message</h2>
+                <h2 class="card-title"><i data-lucide="message-square"></i> Send a Message</h2>
             </div>
             <form onsubmit="event.preventDefault(); alert('Thank you! Your feedback message has been recorded.'); this.reset();">
                 <div class="form-group">
@@ -51,7 +51,7 @@
                     <textarea class="form-control" rows="4" required placeholder="Enter your inquiry or feedback..."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <span>✈️</span> Send Message
+                    <i data-lucide="send"></i> Send Message
                 </button>
             </form>
         </div>

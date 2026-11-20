@@ -322,6 +322,10 @@ function setLanguage(lang) {
     if (selector && selector.value !== lang) {
         selector.value = lang;
     }
+
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+    }
 }
 
 // Sample News Articles for quick user testing

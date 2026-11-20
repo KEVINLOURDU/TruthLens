@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Model Performance & Training Dashboard{% endblock %}
+{% block title %}Model Performance & Evaluation Dashboard{% endblock %}
 
 {% block content %}
 <section>
@@ -10,11 +10,11 @@
         </div>
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
             <a href="{{ url_for('export_metrics') }}" class="btn btn-secondary">
-                <span>📥</span> Download Metrics (CSV)
+                <i data-lucide="download"></i> Download Metrics (CSV)
             </a>
             <form method="POST" action="{{ url_for('train') }}" style="display: inline;" onsubmit="document.getElementById('scannerOverlay').classList.add('active');">
-                <button type="submit" class="btn btn-purple">
-                    <span>⚡</span> Retrain Models
+                <button type="submit" class="btn btn-primary">
+                    <i data-lucide="refresh-cw"></i> Retrain Models
                 </button>
             </form>
         </div>
@@ -23,8 +23,8 @@
     <!-- 5 Models Training Status Grid -->
     <div class="card" style="margin-bottom: 2rem;">
         <div class="card-header">
-            <h2 class="card-title"><span>⚙️</span> Trained Machine Learning Classifiers Status</h2>
-            <span class="badge-tag" style="margin-bottom: 0; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">
+            <h2 class="card-title"><i data-lucide="sliders"></i> Trained Machine Learning Classifiers Status</h2>
+            <span class="badge-tag" style="margin-bottom: 0; background: var(--green-bg); color: var(--green); border-color: var(--green-border);">
                 ● {{ metrics|length }}/5 Models Loaded
             </span>
         </div>
@@ -45,13 +45,13 @@
                 <tbody>
                     {% for key, item in metrics.items() %}
                         <tr>
-                            <td><strong style="color: var(--text-primary);">{{ item.name }}</strong></td>
-                            <td><code style="background: rgba(255,255,255,0.05); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.82rem;">{{ item.params }}</code></td>
-                            <td><span class="model-pred-pill real" style="padding: 0.15rem 0.5rem; font-size: 0.75rem;">● Saved in Joblib</span></td>
-                            <td><strong style="color: var(--accent-cyan);">{{ (item.accuracy * 100)|round(2) }}%</strong></td>
+                            <td><strong style="color: var(--text);">{{ item.name }}</strong></td>
+                            <td><code style="background: var(--bg-muted); padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.82rem; font-family: var(--font-mono);">{{ item.params }}</code></td>
+                            <td><span class="model-pred-pill real" style="padding: 0.15rem 0.5rem; font-size: 0.75rem;">● Serialized</span></td>
+                            <td><strong style="color: var(--accent);">{{ (item.accuracy * 100)|round(2) }}%</strong></td>
                             <td>{{ (item.precision * 100)|round(2) }}%</td>
                             <td>{{ (item.recall * 100)|round(2) }}%</td>
-                            <td><strong style="color: var(--accent-purple);">{{ (item.f1 * 100)|round(2) }}%</strong></td>
+                            <td><strong style="color: var(--green);">{{ (item.f1 * 100)|round(2) }}%</strong></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -60,13 +60,13 @@
     </div>
 
     <!-- Comparative Charts Grid (2x2) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 1.8rem; margin-bottom: 2.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
         <!-- Accuracy Comparison Chart -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="font-size: 1.05rem;"><span>📈</span> Model Accuracy Comparison (%)</h3>
+                <h3 class="card-title" style="font-size: 0.98rem;"><i data-lucide="trending-up"></i> Model Accuracy Comparison (%)</h3>
             </div>
-            <div style="height: 280px; position: relative;">
+            <div style="height: 260px; position: relative;">
                 <canvas id="accuracyChart"></canvas>
             </div>
         </div>
@@ -74,9 +74,9 @@
         <!-- F1-Score Comparison Chart -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="font-size: 1.05rem;"><span>🎯</span> Model F1-Score Comparison (%)</h3>
+                <h3 class="card-title" style="font-size: 0.98rem;"><i data-lucide="target"></i> Model F1-Score Comparison (%)</h3>
             </div>
-            <div style="height: 280px; position: relative;">
+            <div style="height: 260px; position: relative;">
                 <canvas id="f1Chart"></canvas>
             </div>
         </div>
@@ -84,9 +84,9 @@
         <!-- Precision Comparison Chart -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="font-size: 1.05rem;"><span>🔬</span> Model Precision Comparison (%)</h3>
+                <h3 class="card-title" style="font-size: 0.98rem;"><i data-lucide="crosshair"></i> Model Precision Comparison (%)</h3>
             </div>
-            <div style="height: 280px; position: relative;">
+            <div style="height: 260px; position: relative;">
                 <canvas id="precisionChart"></canvas>
             </div>
         </div>
@@ -94,9 +94,9 @@
         <!-- Recall Comparison Chart -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title" style="font-size: 1.05rem;"><span>🔍</span> Model Recall Comparison (%)</h3>
+                <h3 class="card-title" style="font-size: 0.98rem;"><i data-lucide="activity"></i> Model Recall Comparison (%)</h3>
             </div>
-            <div style="height: 280px; position: relative;">
+            <div style="height: 260px; position: relative;">
                 <canvas id="recallChart"></canvas>
             </div>
         </div>
@@ -106,7 +106,7 @@
     <div class="card">
         <div class="card-header">
             <div>
-                <h2 class="card-title"><span>🔲</span> Confusion Matrices (Test Split Evaluation)</h2>
+                <h2 class="card-title"><i data-lucide="grid"></i> Confusion Matrices (Test Split Evaluation)</h2>
                 <p class="card-subtitle">Detailed breakdown of True Negatives, False Positives, False Negatives, and True Positives</p>
             </div>
         </div>
@@ -115,25 +115,25 @@
             {% for key, item in metrics.items() %}
                 <div class="cm-card">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                        <strong style="font-size: 0.95rem;">{{ item.name }}</strong>
-                        <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;">Acc: {{ (item.accuracy * 100)|round(1) }}%</span>
+                        <strong style="font-size: 0.92rem; color: var(--text);">{{ item.name }}</strong>
+                        <span style="font-size: 0.8rem; color: var(--accent); font-weight: 700;">Acc: {{ (item.accuracy * 100)|round(1) }}%</span>
                     </div>
 
                     <div class="cm-matrix">
                         <div class="cm-cell tn" title="Actual Fake, Predicted Fake (True Negative)">
-                            <div class="cm-val" style="color: var(--accent-cyan);">{{ item.cm[0][0] }}</div>
+                            <div class="cm-val" style="color: var(--accent);">{{ item.cm[0][0] }}</div>
                             <div class="cm-name">True Neg (Fake)</div>
                         </div>
                         <div class="cm-cell fp" title="Actual Fake, Predicted Real (False Positive)">
-                            <div class="cm-val" style="color: var(--color-fake);">{{ item.cm[0][1] }}</div>
+                            <div class="cm-val" style="color: var(--red);">{{ item.cm[0][1] }}</div>
                             <div class="cm-name">False Pos (Error)</div>
                         </div>
                         <div class="cm-cell fn" title="Actual Real, Predicted Fake (False Negative)">
-                            <div class="cm-val" style="color: var(--color-fake);">{{ item.cm[1][0] }}</div>
+                            <div class="cm-val" style="color: var(--red);">{{ item.cm[1][0] }}</div>
                             <div class="cm-name">False Neg (Error)</div>
                         </div>
                         <div class="cm-cell tp" title="Actual Real, Predicted Real (True Positive)">
-                            <div class="cm-val" style="color: var(--color-real);">{{ item.cm[1][1] }}</div>
+                            <div class="cm-val" style="color: var(--green);">{{ item.cm[1][1] }}</div>
                             <div class="cm-name">True Pos (Real)</div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
     </div>
 </section>
 
-<!-- Inject Chart.js Configuration -->
+<!-- Inject Chart.js Configuration for Light Theme -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const rawMetrics = {{ metrics | tojson }};
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 backgroundColor: colorStart,
                 borderColor: colorEnd,
                 borderWidth: 1.5,
-                borderRadius: 6
+                borderRadius: 5
             }]
         },
         options: {
@@ -182,11 +182,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     beginAtZero: false,
                     min: 80,
                     max: 100,
-                    ticks: { color: '#94a3b8', callback: (v) => v + '%' },
-                    grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    ticks: { color: '#6b6760', callback: (v) => v + '%' },
+                    grid: { color: 'rgba(0, 0, 0, 0.05)' }
                 },
                 x: {
-                    ticks: { color: '#cbd5e1', font: { size: 11 } },
+                    ticks: { color: '#1a1917', font: { size: 11, family: 'Plus Jakarta Sans' } },
                     grid: { display: false }
                 }
             }
@@ -194,16 +194,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     if (document.getElementById('accuracyChart')) {
-        new Chart(document.getElementById('accuracyChart'), baseChartConfig(labels, accuracies, 'rgba(0, 180, 216, 0.65)', '#00b4d8', 'Accuracy'));
+        new Chart(document.getElementById('accuracyChart'), baseChartConfig(labels, accuracies, 'rgba(37, 99, 235, 0.2)', '#2563eb', 'Accuracy'));
     }
     if (document.getElementById('f1Chart')) {
-        new Chart(document.getElementById('f1Chart'), baseChartConfig(labels, f1s, 'rgba(139, 92, 246, 0.65)', '#8b5cf6', 'F1-Score'));
+        new Chart(document.getElementById('f1Chart'), baseChartConfig(labels, f1s, 'rgba(124, 58, 237, 0.2)', '#7c3aed', 'F1-Score'));
     }
     if (document.getElementById('precisionChart')) {
-        new Chart(document.getElementById('precisionChart'), baseChartConfig(labels, precisions, 'rgba(72, 202, 228, 0.65)', '#48cae4', 'Precision'));
+        new Chart(document.getElementById('precisionChart'), baseChartConfig(labels, precisions, 'rgba(14, 165, 233, 0.2)', '#0ea5e9', 'Precision'));
     }
     if (document.getElementById('recallChart')) {
-        new Chart(document.getElementById('recallChart'), baseChartConfig(labels, recalls, 'rgba(16, 185, 129, 0.65)', '#10b981', 'Recall'));
+        new Chart(document.getElementById('recallChart'), baseChartConfig(labels, recalls, 'rgba(22, 163, 74, 0.2)', '#16a34a', 'Recall'));
     }
 });
 </script>

@@ -25,7 +25,7 @@
 
 <div align="center">
   <a href="https://truthlens-delta-one.vercel.app">
-    <img src="https://api.microlink.io?url=https%3A%2F%2Ftruthlensdelta-one.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="TruthLens Live Site" width="80%" style="border-radius: 12px; border: 1px solid #e4e2de;"/>
+    <img src="static/screenshot.png" alt="TruthLens Live Site" width="90%" style="border-radius: 12px; border: 1px solid #e4e2de; box-shadow: 0 4px 20px rgba(0,0,0,0.08);"/>
   </a>
   <br/>
   <sub>👆 Click to open the live site</sub>

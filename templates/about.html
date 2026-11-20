@@ -11,23 +11,23 @@
     <!-- Introduction Card -->
     <div class="card" style="margin-bottom: 2rem;">
         <div class="card-header">
-            <h2 class="card-title"><span>📖</span> Project Introduction & Objectives</h2>
-            <span class="badge-tag" style="margin-bottom: 0;">Final Year ML Project</span>
+            <h2 class="card-title"><i data-lucide="book-open"></i> Project Introduction & Objectives</h2>
+            <span class="badge-tag" style="margin-bottom: 0;">Machine Learning Research</span>
         </div>
         <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
             The proliferation of misinformation across online digital ecosystems poses significant challenges to public trust, democratic governance, and societal cohesion. <strong>TruthLens</strong> is an end-to-end Machine Learning web application designed to automatically classify news articles as <strong>FAKE</strong> or <strong>REAL</strong> using five established, complementary supervised classification algorithms.
         </p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem;">
-            <div style="background: rgba(10, 18, 42, 0.6); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                <strong style="color: var(--accent-cyan); display: block; margin-bottom: 0.3rem;">Objective 1: Multi-Model Evaluation</strong>
+            <div style="background: var(--bg-muted); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <strong style="color: var(--accent); display: block; margin-bottom: 0.3rem;">Objective 1: Multi-Model Evaluation</strong>
                 <p style="font-size: 0.85rem; color: var(--text-secondary);">Train and contrast five distinct mathematical classifiers on a standardized, stratified test split.</p>
             </div>
-            <div style="background: rgba(10, 18, 42, 0.6); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                <strong style="color: var(--accent-blue); display: block; margin-bottom: 0.3rem;">Objective 2: Majority Consensus</strong>
+            <div style="background: var(--bg-muted); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <strong style="color: var(--accent); display: block; margin-bottom: 0.3rem;">Objective 2: Majority Consensus</strong>
                 <p style="font-size: 0.85rem; color: var(--text-secondary);">Synthesize individual probabilistic and hyperplane decisions through hard ensemble voting.</p>
             </div>
-            <div style="background: rgba(10, 18, 42, 0.6); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
-                <strong style="color: var(--accent-purple); display: block; margin-bottom: 0.3rem;">Objective 3: Multilingual Usability</strong>
+            <div style="background: var(--bg-muted); padding: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                <strong style="color: var(--accent); display: block; margin-bottom: 0.3rem;">Objective 3: Multilingual Usability</strong>
                 <p style="font-size: 0.85rem; color: var(--text-secondary);">Empower regional language speakers with localized UI navigation in English, Tamil, Hindi, Telugu, and Kannada.</p>
             </div>
         </div>
@@ -36,41 +36,41 @@
     <!-- The 5 ML Algorithms Detailed Explanation -->
     <div class="card" style="margin-bottom: 2rem;">
         <div class="card-header">
-            <h2 class="card-title"><span>🧠</span> Mathematical Breakdown of The 5 Classifiers</h2>
+            <h2 class="card-title"><i data-lucide="binary"></i> Mathematical Breakdown of The 5 Classifiers</h2>
             <span class="badge-tag" style="margin-bottom: 0;">Scikit-Learn Implementation</span>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-            <div style="background: rgba(10, 18, 42, 0.7); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid var(--accent-cyan);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">1. Logistic Regression (max_iter=1000, C=1.0)</h3>
+            <div style="background: var(--bg-muted); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                <h3 style="font-size: 1.05rem; margin-bottom: 0.3rem; font-family: var(--font-heading);">1. Logistic Regression (max_iter=1000, C=1.0)</h3>
                 <p style="font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6;">
                     Logistic Regression is a linear classification model that estimates the probability of the positive class (Real News) by applying the sigmoid function \(\sigma(z) = \frac{1}{1 + e^{-z}}\) to a linear combination of TF-IDF feature weights. Regularization parameter \(C=1.0\) controls L2 weight decay to prevent overfitting on sparse n-gram vocabularies.
                 </p>
             </div>
 
-            <div style="background: rgba(10, 18, 42, 0.7); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid var(--accent-blue);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">2. Multinomial Naive Bayes (alpha=0.5)</h3>
+            <div style="background: var(--bg-muted); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                <h3 style="font-size: 1.05rem; margin-bottom: 0.3rem; font-family: var(--font-heading);">2. Multinomial Naive Bayes (alpha=0.5)</h3>
                 <p style="font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6;">
                     Multinomial Naive Bayes models the probability distribution of word occurrences given the target category using Bayes' Theorem with the assumption of conditional feature independence: \(P(c|x) \propto P(c) \prod P(x_i|c)\). The Laplace smoothing factor \(\alpha=0.5\) handles out-of-vocabulary and zero-frequency tokens.
                 </p>
             </div>
 
-            <div style="background: rgba(10, 18, 42, 0.7); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid var(--accent-purple);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">3. Decision Tree (max_depth=50)</h3>
+            <div style="background: var(--bg-muted); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                <h3 style="font-size: 1.05rem; margin-bottom: 0.3rem; font-family: var(--font-heading);">3. Decision Tree (max_depth=50)</h3>
                 <p style="font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6;">
                     The Decision Tree recursively splits the feature space using orthogonal binary decision thresholds based on Gini Impurity: \(I_G(p) = 1 - \sum p_i^2\). Limiting tree depth to 50 prevents memorization of noise while capturing salient lexical cues.
                 </p>
             </div>
 
-            <div style="background: rgba(10, 18, 42, 0.7); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid var(--color-real);">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">4. Random Forest (n_estimators=100, max_depth=50)</h3>
+            <div style="background: var(--bg-muted); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 3px solid var(--green);">
+                <h3 style="font-size: 1.05rem; margin-bottom: 0.3rem; font-family: var(--font-heading);">4. Random Forest (n_estimators=100, max_depth=50)</h3>
                 <p style="font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6;">
                     Random Forest constructs an ensemble of 100 decorrelated decision trees, each trained on a bootstrap sample of the training data with random feature subsampling at each candidate split. Aggregating individual tree votes significantly dampens variance and provides superior generalization.
                 </p>
             </div>
 
-            <div style="background: rgba(10, 18, 42, 0.7); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 4px solid #f59e0b;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">5. Support Vector Machine – Linear Kernel (C=1.0)</h3>
+            <div style="background: var(--bg-muted); padding: 1.2rem; border-radius: var(--radius-sm); border-left: 3px solid var(--yellow);">
+                <h3 style="font-size: 1.05rem; margin-bottom: 0.3rem; font-family: var(--font-heading);">5. Support Vector Machine – Linear Kernel (C=1.0)</h3>
                 <p style="font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6;">
                     Linear Support Vector Classification (LinearSVC) constructs an optimal separating hyperplane that maximizes the geometric margin between Real and Fake news classes in 5,000-dimensional TF-IDF space. Linear SVM is renowned for high efficiency and robustness in high-dimensional text classification.
                 </p>
@@ -79,34 +79,34 @@
     </div>
 
     <!-- Tech Stack & Advantages vs Limitations -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem;">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>💻</span> Technologies Used</h2>
+                <h2 class="card-title"><i data-lucide="code-2"></i> Technologies Used</h2>
             </div>
             <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.88rem;">
-                <li><strong>Backend Framework:</strong> Python 3.13 & Flask 3.1</li>
-                <li><strong>Machine Learning:</strong> Scikit-Learn 1.9 (TF-IDF, LinearSVC, LogisticRegression, etc.)</li>
-                <li><strong>Data Wrangling:</strong> Pandas 3.1 & NumPy 2.5</li>
-                <li><strong>Model Serialization:</strong> Joblib 1.6 for zero-latency instant restarts</li>
-                <li><strong>Interactive Charts:</strong> Chart.js 4.4 CDN for responsive visualizations</li>
-                <li><strong>Styling & Layout:</strong> Modern Responsive CSS3 (Glassmorphism & Neon Dark Theme)</li>
-                <li><strong>Multilingual Engine:</strong> Dynamic Client-Side i18n Localization</li>
+                <li><strong>Backend Framework:</strong> Python 3 & Flask</li>
+                <li><strong>Machine Learning:</strong> Scikit-Learn (TF-IDF, LinearSVC, LogisticRegression, etc.)</li>
+                <li><strong>Data Wrangling:</strong> Pandas & NumPy</li>
+                <li><strong>Model Serialization:</strong> Joblib for instant inference</li>
+                <li><strong>Interactive Charts:</strong> Chart.js 4.4</li>
+                <li><strong>Styling & Layout:</strong> Clean Minimal CSS3 & Lucide Icons</li>
+                <li><strong>Multilingual Engine:</strong> Dynamic Client-Side Localization</li>
             </ul>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>⚖️</span> Advantages & Limitations</h2>
+                <h2 class="card-title"><i data-lucide="scale"></i> Advantages & Limitations</h2>
             </div>
             <div style="margin-bottom: 1rem;">
-                <strong style="color: var(--color-real); font-size: 0.92rem; display: block; margin-bottom: 0.3rem;">Advantages:</strong>
+                <strong style="color: var(--green); font-size: 0.92rem; display: block; margin-bottom: 0.3rem;">Advantages:</strong>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
                     Sub-millisecond inference time; lightweight footprint without GPU dependency; multi-model majority voting provides robust checks against individual model bias; transparent evaluation metrics.
                 </p>
             </div>
             <div>
-                <strong style="color: var(--color-fake); font-size: 0.92rem; display: block; margin-bottom: 0.3rem;">Limitations:</strong>
+                <strong style="color: var(--red); font-size: 0.92rem; display: block; margin-bottom: 0.3rem;">Limitations:</strong>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
                     TF-IDF bag-of-words ignores long-range syntactic nuances; models trained on English articles cannot yet accurately classify non-English text directly; predictions reflect statistical patterns rather than real-time live fact verification.
                 </p>

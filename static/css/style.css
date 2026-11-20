@@ -439,6 +439,25 @@ body {
     gap: 0.5rem;
 }
 
+.card-title svg {
+    width: 18px;
+    height: 18px;
+    color: var(--accent);
+    stroke-width: 2;
+}
+
+.btn svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2;
+}
+
+.badge-tag svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 2;
+}
+
 .card-subtitle {
     font-size: 0.82rem;
     color: var(--text-muted);

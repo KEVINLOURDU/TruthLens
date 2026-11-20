@@ -12,7 +12,7 @@
         <!-- Input Form Card -->
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title"><span>📝</span> News Input</h2>
+                <h2 class="card-title"><i data-lucide="file-edit"></i> News Input</h2>
                 <div class="quick-samples">
                     <span data-i18n="samples_label">Quick Samples:</span>
                     <button type="button" class="sample-chip" onclick="loadSample('real')" data-i18n="sample_real">Sample Real News</button>
@@ -38,11 +38,11 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-lg" style="flex: 1;" data-i18n="btn_detect">
-                        <span>⚡</span> Detect News Authenticity
+                    <button type="submit" class="btn btn-primary btn-lg" style="flex: 1;">
+                        <i data-lucide="shield-check"></i> <span data-i18n="btn_detect">Detect News Authenticity</span>
                     </button>
-                    <button type="button" class="btn btn-secondary" onclick="clearInputs()" data-i18n="btn_clear">
-                        <span>🔄</span> Clear
+                    <button type="button" class="btn btn-secondary" onclick="clearInputs()">
+                        <i data-lucide="rotate-ccw"></i> <span data-i18n="btn_clear">Clear</span>
                     </button>
                 </div>
             </form>
@@ -51,11 +51,11 @@
         <!-- Detection Results Card -->
         <div class="card" id="detectionResultBox">
             <div class="card-header">
-                <h2 class="card-title"><span>🎯</span> Verification Results</h2>
+                <h2 class="card-title"><i data-lucide="check-circle-2"></i> Verification Results</h2>
                 {% if result %}
                     <span class="badge-tag" style="margin-bottom: 0;">Completed</span>
                 {% else %}
-                    <span class="badge-tag" style="margin-bottom: 0; background: rgba(255,255,255,0.05); color: var(--text-muted); border-color: rgba(255,255,255,0.1);">Awaiting Input</span>
+                    <span class="badge-tag" style="margin-bottom: 0; background: var(--bg-muted); color: var(--text-muted); border-color: var(--border);">Awaiting Input</span>
                 {% endif %}
             </div>
 
@@ -76,14 +76,14 @@
                 </div>
 
                 <!-- 5 Models Breakdown -->
-                <h3 style="font-size: 1rem; margin-bottom: 0.8rem; color: var(--text-secondary);" data-i18n="models_breakdown">Individual Model Predictions</h3>
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem; color: var(--text-secondary); font-family: var(--font-heading);" data-i18n="models_breakdown">Individual Model Predictions</h3>
                 <div style="display: flex; flex-direction: column; gap: 0.75rem;">
                     {% for m_key, m_info in result.individual.items() %}
-                        <div style="background: rgba(8, 14, 32, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem 1rem;">
+                        <div style="background: var(--bg-muted); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem 1rem;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
                                 <div>
-                                    <strong style="font-size: 0.92rem;">{{ m_info.name }}</strong>
-                                    <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.4rem; font-family: monospace;">{{ m_info.params }}</span>
+                                    <strong style="font-size: 0.92rem; color: var(--text);">{{ m_info.name }}</strong>
+                                    <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.4rem; font-family: var(--font-mono);">{{ m_info.params }}</span>
                                 </div>
                                 <span class="model-pred-pill {{ 'real' if m_info.pred == 1 else 'fake' }}" style="margin-bottom: 0; padding: 0.2rem 0.6rem; font-size: 0.78rem;">
                                     {{ 'REAL NEWS' if m_info.pred == 1 else 'FAKE NEWS' }}
@@ -106,9 +106,11 @@
             {% else %}
                 <!-- Empty State -->
                 <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
-                    <div style="font-size: 3rem; margin-bottom: 0.8rem; opacity: 0.5;">🛡️</div>
-                    <h3 style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.4rem;">No Article Evaluated Yet</h3>
-                    <p style="font-size: 0.86rem; max-width: 300px; margin: 0 auto;">Paste a news article on the left or click "Sample Real News" or "Sample Fake News" to see live predictions.</p>
+                    <div style="margin-bottom: 0.8rem; display: flex; justify-content: center;">
+                        <i data-lucide="shield" style="width: 48px; height: 48px; stroke-width: 1.5; color: var(--text-muted); opacity: 0.6;"></i>
+                    </div>
+                    <h3 style="font-size: 1.05rem; color: var(--text); margin-bottom: 0.4rem; font-family: var(--font-heading);">No Article Evaluated Yet</h3>
+                    <p style="font-size: 0.86rem; max-width: 320px; margin: 0 auto; color: var(--text-secondary);">Paste a news article on the left or select a sample to run live verification across all 5 models.</p>
                 </div>
             {% endif %}
         </div>
@@ -117,7 +119,7 @@
     <!-- Session Prediction History Table -->
     <div class="card" style="margin-top: 1.8rem;">
         <div class="card-header">
-            <h2 class="card-title"><span>🕒</span> <span data-i18n="history_title">Session Prediction History</span></h2>
+            <h2 class="card-title"><i data-lucide="history"></i> <span data-i18n="history_title">Session Prediction History</span></h2>
             <span class="badge-tag" style="margin-bottom: 0;">{{ history|length }} Analyzed</span>
         </div>
 
@@ -136,7 +138,7 @@
                     <tbody>
                         {% for item in history %}
                             <tr>
-                                <td style="color: var(--text-muted); font-size: 0.82rem; font-family: monospace;">{{ item.time }}</td>
+                                <td style="color: var(--text-muted); font-size: 0.82rem; font-family: var(--font-mono);">{{ item.time }}</td>
                                 <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                                     {{ item.title if item.title else item.snippet }}
                                 </td>
@@ -145,9 +147,9 @@
                                         {{ 'REAL NEWS' if item.verdict == 1 else 'FAKE NEWS' }}
                                     </span>
                                 </td>
-                                <td style="font-family: monospace;">{{ item.vote_summary }}</td>
+                                <td style="font-family: var(--font-mono);">{{ item.vote_summary }}</td>
                                 <td>
-                                    <span style="color: var(--accent-cyan); font-weight: 600;">{{ item.agreement_pct }}%</span>
+                                    <span style="color: var(--accent); font-weight: 600;">{{ item.agreement_pct }}%</span>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -161,12 +163,12 @@
         {% endif %}
     </div>
 
-    <!-- AI Disclaimer Banner -->
+    <!-- Disclaimer Banner -->
     <div class="alert-box alert-warning" style="margin-top: 2rem;">
-        <span style="font-size: 1.3rem;">⚠️</span>
+        <i data-lucide="alert-triangle" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"></i>
         <div>
-            <strong data-i18n="disclaimer_title">AI Veracity Disclaimer</strong>
-            <p data-i18n="disclaimer_text" style="font-size: 0.86rem; margin-top: 0.2rem;">
+            <strong data-i18n="disclaimer_title">Disclaimer</strong>
+            <p data-i18n="disclaimer_text" style="font-size: 0.86rem; margin-top: 0.2rem; color: var(--text-secondary);">
                 TruthLens utilizes statistical Natural Language Processing and Machine Learning models trained on historical datasets. While highly accurate, automated predictions should serve as assistive tools rather than definitive journalistic fact-checks. Note: Prediction models process English text; translations apply to the website interface.
             </p>
         </div>
