@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Contact & Academic Project Info{% endblock %}
+
+{% block content %}
+<section>
+    <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.3rem;">Contact & Project Details</h1>
+        <p style="color: var(--text-secondary);">TruthLens – College Final-Year Machine Learning Research & Demonstration Project.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem;">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><span>📬</span> Contact Information</h2>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.92rem;">
+                Have questions or feedback regarding the Machine Learning models, dataset processing, or implementation? Feel free to reach out.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem;">
+                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <strong style="color: var(--accent-cyan); display: block;">Project Repository</strong>
+                    <span style="color: var(--text-secondary);">TruthLens: Multilingual Fake News Detection System</span>
+                </div>
+                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <strong style="color: var(--accent-blue); display: block;">Framework</strong>
+                    <span style="color: var(--text-secondary);">Flask 3.1 + Scikit-Learn 1.9 + Joblib</span>
+                </div>
+                <div style="background: rgba(10, 18, 42, 0.6); padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <strong style="color: var(--accent-purple); display: block;">Supported Languages</strong>
+                    <span style="color: var(--text-secondary);">English, Tamil (தமிழ்), Hindi (हिन्दी), Telugu (తెలుగు), Kannada (ಕನ್ನಡ)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><span>✉️</span> Send a Message</h2>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Thank you! Your feedback message has been recorded.'); this.reset();">
+                <div class="form-group">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" class="form-control" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" required placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message / Feedback</label>
+                    <textarea class="form-control" rows="4" required placeholder="Enter your inquiry or feedback..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span>✈️</span> Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

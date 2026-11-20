@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens – {% block title %}Multilingual Fake News Detection{% endblock %}</title>
+    <!-- Favicon SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300b4d8'><path d='M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm-1 6h2v6h-2V8zm1 10.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/></svg>">
+    <!-- Chart.js CDN for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+    <!-- Scanner Overlay for Inference Processing -->
+    <div id="scannerOverlay" class="scanner-overlay">
+        <div class="scanner-spinner"></div>
+        <div class="scanner-text" data-i18n="scanner_text">TruthLens AI Analyzing Article...</div>
+        <div class="scanner-sub" data-i18n="scanner_sub">Evaluating across 5 Machine Learning Classifiers</div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <circle cx="12" cy="11" r="3"/>
+                    </svg>
+                </div>
+                <div class="brand-name">Truth<span>Lens</span></div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}" class="nav-link {% if active_page == 'home' %}active{% endif %}" data-i18n="nav_home">Home</a></li>
+                <li><a href="{{ url_for('detect') }}" class="nav-link {% if active_page == 'detect' %}active{% endif %}" data-i18n="nav_detect">Detection</a></li>
+                <li><a href="{{ url_for('dataset_info') }}" class="nav-link {% if active_page == 'dataset' %}active{% endif %}" data-i18n="nav_dataset">Dataset Info</a></li>
+                <li><a href="{{ url_for('performance') }}" class="nav-link {% if active_page == 'performance' %}active{% endif %}" data-i18n="nav_performance">Model Performance</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link {% if active_page == 'about' %}active{% endif %}" data-i18n="nav_about">About Project</a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link {% if active_page == 'contact' %}active{% endif %}" data-i18n="nav_contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-controls">
+                <div class="lang-picker-wrapper">
+                    <span class="lang-picker-icon">🌐</span>
+                    <select id="languageSelector" class="lang-select" title="Choose Interface Language">
+                        <option value="en">English</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                    </select>
+                    <span class="lang-arrow">▼</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <!-- Flash Message Alerts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert-box alert-{{ category if category != 'error' else 'warning' }}">
+                            <span class="alert-icon">ℹ️</span>
+                            <div class="alert-text">{{ message }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p><strong data-i18n="nav_brand">TruthLens</strong> – <span data-i18n="footer_text">Multilingual Fake News Detection System</span></p>
+                <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.2rem;">Powered by Scikit-Learn, Flask, Python & TF-IDF Vectorization</p>
+            </div>
+            <div class="footer-right">
+                <span class="badge-tag" style="margin-bottom: 0;">5 ML Classifiers Active</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

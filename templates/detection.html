@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}News Detection Workspace{% endblock %}
+
+{% block content %}
+<section>
+    <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 0.3rem;" data-i18n="detect_title">News Verification Center</h1>
+        <p style="color: var(--text-secondary);" data-i18n="detect_subtitle">Paste or enter the news headline and body text to run inference on all 5 trained models.</p>
+    </div>
+
+    <div class="detection-grid">
+        <!-- Input Form Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title"><span>📝</span> News Input</h2>
+                <div class="quick-samples">
+                    <span data-i18n="samples_label">Quick Samples:</span>
+                    <button type="button" class="sample-chip" onclick="loadSample('real')" data-i18n="sample_real">Sample Real News</button>
+                    <button type="button" class="sample-chip" onclick="loadSample('fake')" data-i18n="sample_fake">Sample Fake News</button>
+                </div>
+            </div>
+
+            <form id="detectionForm" method="POST" action="{{ url_for('detect') }}">
+                <div class="form-group">
+                    <label class="form-label" for="newsTitle">
+                        <span data-i18n="label_headline">News Headline / Title</span>
+                        <span style="font-size: 0.78rem; color: var(--text-muted);">(Optional)</span>
+                    </label>
+                    <input type="text" id="newsTitle" name="title" class="form-control" value="{{ headline|default('') }}" placeholder="Enter news headline here..." data-i18n-ph="ph_headline">
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">
+                        <span data-i18n="label_article">Full News Article Text *</span>
+                        <span id="articleWordCount" class="input-count">0 words | 0 chars</span>
+                    </div>
+                    <textarea id="newsArticle" name="article" class="form-control" rows="8" required placeholder="Paste the full news article content here (at least 20 words recommended)..." data-i18n-ph="ph_article">{{ article|default('') }}</textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg" style="flex: 1;" data-i18n="btn_detect">
+                        <span>⚡</span> Detect News Authenticity
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="clearInputs()" data-i18n="btn_clear">
+                        <span>🔄</span> Clear
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Detection Results Card -->
+        <div class="card" id="detectionResultBox">
+            <div class="card-header">
+                <h2 class="card-title"><span>🎯</span> Verification Results</h2>
+                {% if result %}
+                    <span class="badge-tag" style="margin-bottom: 0;">Completed</span>
+                {% else %}
+                    <span class="badge-tag" style="margin-bottom: 0; background: rgba(255,255,255,0.05); color: var(--text-muted); border-color: rgba(255,255,255,0.1);">Awaiting Input</span>
+                {% endif %}
+            </div>
+
+            {% if result %}
+                <!-- Verdict Banner -->
+                <div class="verdict-banner {{ 'real' if result.majority_label == 1 else 'fake' }}">
+                    <div class="verdict-badge" data-i18n="verdict_badge">Majority Voting Outcome</div>
+                    <div class="verdict-title">
+                        {% if result.majority_label == 1 %}
+                            <span data-i18n="verdict_real">VERIFIED REAL NEWS</span>
+                        {% else %}
+                            <span data-i18n="verdict_fake">FLAGGED FAKE NEWS</span>
+                        {% endif %}
+                    </div>
+                    <div class="verdict-vote">
+                        <strong>{{ result.agree_count }}/5 Models Agree</strong> (<span data-i18n="verdict_vote_text">majority vote based on 5 independent machine learning classifiers.</span>)
+                    </div>
+                </div>
+
+                <!-- 5 Models Breakdown -->
+                <h3 style="font-size: 1rem; margin-bottom: 0.8rem; color: var(--text-secondary);" data-i18n="models_breakdown">Individual Model Predictions</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    {% for m_key, m_info in result.individual.items() %}
+                        <div style="background: rgba(8, 14, 32, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                                <div>
+                                    <strong style="font-size: 0.92rem;">{{ m_info.name }}</strong>
+                                    <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.4rem; font-family: monospace;">{{ m_info.params }}</span>
+                                </div>
+                                <span class="model-pred-pill {{ 'real' if m_info.pred == 1 else 'fake' }}" style="margin-bottom: 0; padding: 0.2rem 0.6rem; font-size: 0.78rem;">
+                                    {{ 'REAL NEWS' if m_info.pred == 1 else 'FAKE NEWS' }}
+                                </span>
+                            </div>
+
+                            {% if m_info.confidence is not none %}
+                                <div class="confidence-bar-bg">
+                                    <div class="confidence-bar-fill {{ 'real' if m_info.pred == 1 else 'fake' }}" style="width: {{ m_info.confidence }}%;"></div>
+                                </div>
+                                <div class="confidence-label">
+                                    <span data-i18n="confidence_text">Confidence Score:</span>
+                                    <strong>{{ m_info.confidence }}%</strong>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <!-- Empty State -->
+                <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+                    <div style="font-size: 3rem; margin-bottom: 0.8rem; opacity: 0.5;">🛡️</div>
+                    <h3 style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 0.4rem;">No Article Evaluated Yet</h3>
+                    <p style="font-size: 0.86rem; max-width: 300px; margin: 0 auto;">Paste a news article on the left or click "Sample Real News" or "Sample Fake News" to see live predictions.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Session Prediction History Table -->
+    <div class="card" style="margin-top: 1.8rem;">
+        <div class="card-header">
+            <h2 class="card-title"><span>🕒</span> <span data-i18n="history_title">Session Prediction History</span></h2>
+            <span class="badge-tag" style="margin-bottom: 0;">{{ history|length }} Analyzed</span>
+        </div>
+
+        {% if history %}
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="history_time">Time</th>
+                            <th data-i18n="history_headline">Headline / Snippet</th>
+                            <th data-i18n="history_verdict">Verdict</th>
+                            <th data-i18n="history_vote">Votes</th>
+                            <th>Agreement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in history %}
+                            <tr>
+                                <td style="color: var(--text-muted); font-size: 0.82rem; font-family: monospace;">{{ item.time }}</td>
+                                <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    {{ item.title if item.title else item.snippet }}
+                                </td>
+                                <td>
+                                    <span class="model-pred-pill {{ 'real' if item.verdict == 1 else 'fake' }}" style="margin-bottom: 0; padding: 0.2rem 0.6rem; font-size: 0.78rem;">
+                                        {{ 'REAL NEWS' if item.verdict == 1 else 'FAKE NEWS' }}
+                                    </span>
+                                </td>
+                                <td style="font-family: monospace;">{{ item.vote_summary }}</td>
+                                <td>
+                                    <span style="color: var(--accent-cyan); font-weight: 600;">{{ item.agreement_pct }}%</span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p style="color: var(--text-muted); font-size: 0.88rem; text-align: center; padding: 1.5rem 0;" data-i18n="no_history">
+                No articles analyzed in this session yet.
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- AI Disclaimer Banner -->
+    <div class="alert-box alert-warning" style="margin-top: 2rem;">
+        <span style="font-size: 1.3rem;">⚠️</span>
+        <div>
+            <strong data-i18n="disclaimer_title">AI Veracity Disclaimer</strong>
+            <p data-i18n="disclaimer_text" style="font-size: 0.86rem; margin-top: 0.2rem;">
+                TruthLens utilizes statistical Natural Language Processing and Machine Learning models trained on historical datasets. While highly accurate, automated predictions should serve as assistive tools rather than definitive journalistic fact-checks. Note: Prediction models process English text; translations apply to the website interface.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

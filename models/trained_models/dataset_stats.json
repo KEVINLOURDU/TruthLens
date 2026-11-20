@@ -1,0 +1,9 @@
+{
+  "total_records": "15,000",
+  "fake_count": "6,869",
+  "real_count": "8,131",
+  "fake_pct": 45.8,
+  "real_pct": 54.2,
+  "train_size": "12,000",
+  "test_size": "3,000"
+}
