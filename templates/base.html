@@ -37,12 +37,12 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="{{ url_for('home') }}" class="nav-link {% if active_page == 'home' %}active{% endif %}" data-i18n="nav_home">Home</a></li>
-                <li><a href="{{ url_for('detect') }}" class="nav-link {% if active_page == 'detect' %}active{% endif %}" data-i18n="nav_detect">Detection</a></li>
-                <li><a href="{{ url_for('dataset_info') }}" class="nav-link {% if active_page == 'dataset' %}active{% endif %}" data-i18n="nav_dataset">Dataset Info</a></li>
-                <li><a href="{{ url_for('performance') }}" class="nav-link {% if active_page == 'performance' %}active{% endif %}" data-i18n="nav_performance">Model Performance</a></li>
-                <li><a href="{{ url_for('about') }}" class="nav-link {% if active_page == 'about' %}active{% endif %}" data-i18n="nav_about">About Project</a></li>
-                <li><a href="{{ url_for('contact') }}" class="nav-link {% if active_page == 'contact' %}active{% endif %}" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link {% if active_page == 'home' %}active{% endif %}"><i data-lucide="home"></i> <span data-i18n="nav_home">Home</span></a></li>
+                <li><a href="{{ url_for('detect') }}" class="nav-link {% if active_page == 'detect' %}active{% endif %}"><i data-lucide="scan-line"></i> <span data-i18n="nav_detect">Detection</span></a></li>
+                <li><a href="{{ url_for('dataset_info') }}" class="nav-link {% if active_page == 'dataset' %}active{% endif %}"><i data-lucide="database"></i> <span data-i18n="nav_dataset">Dataset Info</span></a></li>
+                <li><a href="{{ url_for('performance') }}" class="nav-link {% if active_page == 'performance' %}active{% endif %}"><i data-lucide="gauge"></i> <span data-i18n="nav_performance">Model Performance</span></a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link {% if active_page == 'about' %}active{% endif %}"><i data-lucide="info"></i> <span data-i18n="nav_about">About Project</span></a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link {% if active_page == 'contact' %}active{% endif %}"><i data-lucide="mail"></i> <span data-i18n="nav_contact">Contact</span></a></li>
             </ul>
 
             <div class="nav-controls">
