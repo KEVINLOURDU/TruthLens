@@ -73,6 +73,50 @@ body {
 }
 
 /* ==========================================================
+   Lucide Icon Helpers
+   ========================================================== */
+.step-icon-wrap {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+}
+
+.step-icon-wrap svg {
+    width: 18px;
+    height: 18px;
+}
+
+.model-icon-wrap {
+    width: 32px;
+    height: 32px;
+    background: var(--accent-light);
+    border: 1px solid #c7d9fd;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+    color: var(--accent);
+}
+
+.model-icon-wrap svg {
+    width: 15px;
+    height: 15px;
+}
+
+.brand-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================
    Navigation
    ========================================================== */
 .navbar {

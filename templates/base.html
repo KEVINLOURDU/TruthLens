@@ -6,6 +6,8 @@
     <title>TruthLens – {% block title %}Multilingual Fake News Detection{% endblock %}</title>
     <!-- Favicon SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300b4d8'><path d='M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm-1 6h2v6h-2V8zm1 10.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/></svg>">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <!-- Google Fonts: Sora (headings) + Plus Jakarta Sans (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,10 +31,7 @@
         <nav class="navbar">
             <a href="{{ url_for('home') }}" class="nav-brand">
                 <div class="brand-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        <circle cx="12" cy="11" r="3"/>
-                    </svg>
+                    <i data-lucide="shield-check"></i>
                 </div>
                 <div class="brand-name">Truth<span>Lens</span></div>
             </a>
@@ -48,7 +47,7 @@
 
             <div class="nav-controls">
                 <div class="lang-picker-wrapper">
-                    <span class="lang-picker-icon">🌐</span>
+    <span class="lang-picker-icon"><i data-lucide="globe" style="width:14px;height:14px;"></i></span>
                     <select id="languageSelector" class="lang-select" title="Choose Interface Language">
                         <option value="en">English</option>
                         <option value="ta">தமிழ் (Tamil)</option>
@@ -70,7 +69,7 @@
                 <div class="flash-messages">
                     {% for category, message in messages %}
                         <div class="alert-box alert-{{ category if category != 'error' else 'warning' }}">
-                            <span class="alert-icon">ℹ️</span>
+        <span class="alert-icon"><i data-lucide="info" style="width:16px;height:16px;"></i></span>
                             <div class="alert-text">{{ message }}</div>
                         </div>
                     {% endfor %}
@@ -94,5 +93,7 @@
         </div>
     </footer>
 
+    <!-- Init Lucide icons -->
+    <script>lucide.createIcons();</script>
 </body>
 </html>

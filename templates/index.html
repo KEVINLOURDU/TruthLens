@@ -5,7 +5,8 @@
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="badge-tag">
-        🔬 Powered by 5 Machine Learning Models
+        <i data-lucide="flask-conical" style="width:13px;height:13px;"></i>
+        Powered by 5 Machine Learning Models
     </div>
 
     <h1 class="hero-title">
@@ -19,10 +20,10 @@
 
     <div class="hero-cta">
         <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg" data-i18n="btn_start_detect">
-            🔍 Start Detection
+            <i data-lucide="scan-search" style="width:17px;height:17px;"></i> Start Detection
         </a>
         <a href="{{ url_for('performance') }}" class="btn btn-secondary btn-lg" data-i18n="btn_view_perf">
-            📊 Model Performance
+            <i data-lucide="bar-chart-2" style="width:17px;height:17px;"></i> Model Performance
         </a>
     </div>
 
@@ -52,7 +53,10 @@
     <div class="card">
         <div class="card-header">
             <div>
-                <h2 class="card-title">⚙️ How It Works</h2>
+                <h2 class="card-title">
+                    <i data-lucide="workflow" style="width:18px;height:18px;color:var(--accent);"></i>
+                    How It Works
+                </h2>
                 <p class="card-subtitle">From your article text to a final verdict in seconds</p>
             </div>
             <a href="{{ url_for('about') }}" class="btn btn-secondary btn-sm">Learn more →</a>
@@ -60,26 +64,26 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
             <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📥</div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">1. Article Input</h4>
+                <div class="step-icon-wrap"><i data-lucide="file-text"></i></div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); font-family: var(--font-heading);">1. Article Input</h4>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">You paste your headline and article text into the form.</p>
             </div>
 
             <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🧹</div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">2. Text Cleaning</h4>
+                <div class="step-icon-wrap"><i data-lucide="filter"></i></div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); font-family: var(--font-heading);">2. Text Cleaning</h4>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Removes punctuation, URLs, stopwords, and noise from the text.</p>
             </div>
 
             <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔢</div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">3. TF-IDF Vectorization</h4>
+                <div class="step-icon-wrap"><i data-lucide="hash"></i></div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); font-family: var(--font-heading);">3. TF-IDF Vectorization</h4>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Converts words into numbers so ML models can understand them.</p>
             </div>
 
             <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🗳️</div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">4. Majority Vote</h4>
+                <div class="step-icon-wrap"><i data-lucide="vote"></i></div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); font-family: var(--font-heading);">4. Majority Vote</h4>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">All 5 models vote — the majority decides Real ✅ or Fake ❌.</p>
             </div>
         </div>
@@ -91,7 +95,10 @@
     <div class="card">
         <div class="card-header">
             <div>
-                <h2 class="card-title">🧠 The 5 ML Models</h2>
+                <h2 class="card-title">
+                    <i data-lucide="cpu" style="width:18px;height:18px;color:var(--accent);"></i>
+                    The 5 ML Models
+                </h2>
                 <p class="card-subtitle">Each model was trained on 15,000 real and fake news articles</p>
             </div>
             <a href="{{ url_for('performance') }}" class="btn btn-secondary btn-sm">View charts →</a>
@@ -99,35 +106,35 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
             <div class="model-card">
-                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📈</div>
+                <div class="model-icon-wrap"><i data-lucide="trending-up"></i></div>
                 <div class="model-name">Logistic Regression</div>
                 <div class="model-param-tag">98.37% accuracy</div>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Finds the best decision boundary to separate real vs fake articles.</p>
             </div>
 
             <div class="model-card">
-                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🎲</div>
+                <div class="model-icon-wrap"><i data-lucide="layers"></i></div>
                 <div class="model-name">Naive Bayes</div>
                 <div class="model-param-tag">94.77% accuracy</div>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Uses word probabilities to guess whether news is real or fake.</p>
             </div>
 
             <div class="model-card">
-                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🌳</div>
+                <div class="model-icon-wrap"><i data-lucide="git-branch"></i></div>
                 <div class="model-name">Decision Tree</div>
                 <div class="model-param-tag">99.27% accuracy</div>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Splits the data step-by-step like a yes/no flowchart.</p>
             </div>
 
             <div class="model-card">
-                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🌲</div>
+                <div class="model-icon-wrap"><i data-lucide="network"></i></div>
                 <div class="model-name">Random Forest</div>
                 <div class="model-param-tag">99.47% accuracy</div>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Uses 100 decision trees and takes a majority vote among them.</p>
             </div>
 
             <div class="model-card">
-                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📐</div>
+                <div class="model-icon-wrap"><i data-lucide="minus-square"></i></div>
                 <div class="model-name">Linear SVM</div>
                 <div class="model-param-tag">99.17% accuracy</div>
                 <p style="font-size: 0.82rem; color: var(--text-secondary);">Draws the widest possible line to separate real and fake classes.</p>
@@ -139,7 +146,7 @@
 <!-- Disclaimer -->
 <section style="margin-top: 2rem;">
     <div class="alert-box alert-warning">
-        <span style="font-size: 1.3rem;">⚠️</span>
+        <i data-lucide="alert-triangle" style="width:18px;height:18px;flex-shrink:0;margin-top:1px;"></i>
         <div>
             <strong data-i18n="disclaimer_title">Disclaimer</strong>
             <p data-i18n="disclaimer_text" style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--text-secondary);">
