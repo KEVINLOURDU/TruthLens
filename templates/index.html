@@ -1,144 +1,149 @@
 {% extends "base.html" %}
-{% block title %}AI-Powered Fake News Detection{% endblock %}
+{% block title %}Fake News Detection{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="badge-tag">
-        <span>⚡</span> <span data-i18n="hero_badge">AI & ML Powered Verification</span>
+        🔬 Powered by 5 Machine Learning Models
     </div>
-    
+
     <h1 class="hero-title">
         <span data-i18n="hero_title_1">TruthLens – Multilingual</span><br>
         <span class="gradient-text" data-i18n="hero_title_2">Fake News Detection</span>
     </h1>
-    
+
     <p class="hero-desc" data-i18n="hero_desc">
-        Verify news authenticity with 5 robust Machine Learning models: Logistic Regression, Naive Bayes, Decision Tree, Random Forest, and Linear SVM.
+        Paste any news article and TruthLens checks it across 5 ML classifiers — Logistic Regression, Naive Bayes, Decision Tree, Random Forest, and SVM — then gives a majority verdict.
     </p>
-    
+
     <div class="hero-cta">
         <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg" data-i18n="btn_start_detect">
-            <span>🔍</span> Start Detection
+            🔍 Start Detection
         </a>
         <a href="{{ url_for('performance') }}" class="btn btn-secondary btn-lg" data-i18n="btn_view_perf">
-            <span>📊</span> Model Performance
+            📊 Model Performance
         </a>
     </div>
 
     <!-- Quick Stats Bar -->
     <div class="hero-stats-bar">
         <div class="stat-item">
-            <h3 data-i18n="stat_algorithms">5 ML Models</h3>
+            <h3 data-i18n="stat_algorithms">5 Models</h3>
             <p data-i18n="stat_algorithms_sub">Trained & Evaluated</p>
         </div>
         <div class="stat-item">
             <h3 data-i18n="stat_accuracy">99.4%+</h3>
-            <p data-i18n="stat_accuracy_sub">Top Model Accuracy</p>
+            <p data-i18n="stat_accuracy_sub">Top Accuracy</p>
         </div>
         <div class="stat-item">
             <h3 data-i18n="stat_dataset">44,898</h3>
-            <p data-i18n="stat_dataset_sub">Verified News Articles</p>
+            <p data-i18n="stat_dataset_sub">News Articles</p>
         </div>
         <div class="stat-item">
             <h3 data-i18n="stat_languages">5 Languages</h3>
-            <p data-i18n="stat_languages_sub">Interface Support</p>
+            <p data-i18n="stat_languages_sub">UI Support</p>
         </div>
     </div>
 </section>
 
-<!-- System Architecture & Workflow -->
-<section style="margin-top: 3.5rem;">
+<!-- How It Works -->
+<section style="margin-top: 3rem;">
     <div class="card">
         <div class="card-header">
             <div>
-                <h2 class="card-title"><span>⚙️</span> Detection Architecture & Pipeline</h2>
-                <p class="card-subtitle">End-to-end Machine Learning pipeline from raw text to ensemble majority verdict</p>
+                <h2 class="card-title">⚙️ How It Works</h2>
+                <p class="card-subtitle">From your article text to a final verdict in seconds</p>
             </div>
-            <a href="{{ url_for('about') }}" class="btn btn-secondary btn-sm">Learn Details →</a>
+            <a href="{{ url_for('about') }}" class="btn btn-secondary btn-sm">Learn more →</a>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1rem;">
-            <div style="background: rgba(14, 25, 55, 0.7); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.4rem; color: var(--accent-cyan); font-weight: 800; margin-bottom: 0.3rem;">01</div>
-                <h4 style="font-size: 1rem; margin-bottom: 0.3rem;">Article Ingestion</h4>
-                <p style="font-size: 0.84rem; color: var(--text-secondary);">Receives headline and full article text, validating length and structure.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+            <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📥</div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">1. Article Input</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">You paste your headline and article text into the form.</p>
             </div>
 
-            <div style="background: rgba(14, 25, 55, 0.7); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.4rem; color: var(--accent-blue); font-weight: 800; margin-bottom: 0.3rem;">02</div>
-                <h4 style="font-size: 1rem; margin-bottom: 0.3rem;">NLP Preprocessing</h4>
-                <p style="font-size: 0.84rem; color: var(--text-secondary);">Lowercasing, punctuation stripping, URL regex removal, and stopword filtering.</p>
+            <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🧹</div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">2. Text Cleaning</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Removes punctuation, URLs, stopwords, and noise from the text.</p>
             </div>
 
-            <div style="background: rgba(14, 25, 55, 0.7); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.4rem; color: var(--accent-purple); font-weight: 800; margin-bottom: 0.3rem;">03</div>
-                <h4 style="font-size: 1rem; margin-bottom: 0.3rem;">TF-IDF Vectorization</h4>
-                <p style="font-size: 0.84rem; color: var(--text-secondary);">Maps text to a 5,000-dimensional term frequency–inverse document frequency feature matrix.</p>
+            <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔢</div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">3. TF-IDF Vectorization</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Converts words into numbers so ML models can understand them.</p>
             </div>
 
-            <div style="background: rgba(14, 25, 55, 0.7); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: var(--radius-sm);">
-                <div style="font-size: 1.4rem; color: var(--color-real); font-weight: 800; margin-bottom: 0.3rem;">04</div>
-                <h4 style="font-size: 1rem; margin-bottom: 0.3rem;">Ensemble Voting</h4>
-                <p style="font-size: 0.84rem; color: var(--text-secondary);">Executes all 5 ML models concurrently and determines the final verdict via majority voting.</p>
+            <div style="background: var(--bg-muted); border: 1px solid var(--border); padding: 1.2rem; border-radius: var(--radius-sm);">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🗳️</div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text);">4. Majority Vote</h4>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">All 5 models vote — the majority decides Real ✅ or Fake ❌.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- The 5 ML Algorithms Grid -->
-<section style="margin-top: 2.5rem;">
+<!-- The 5 ML Models -->
+<section style="margin-top: 2rem;">
     <div class="card">
         <div class="card-header">
             <div>
-                <h2 class="card-title"><span>🧠</span> Evaluated Machine Learning Algorithms</h2>
-                <p class="card-subtitle">5 distinct mathematical classifiers trained and serialized with joblib</p>
+                <h2 class="card-title">🧠 The 5 ML Models</h2>
+                <p class="card-subtitle">Each model was trained on 15,000 real and fake news articles</p>
             </div>
-            <a href="{{ url_for('performance') }}" class="btn btn-secondary btn-sm">View Charts →</a>
+            <a href="{{ url_for('performance') }}" class="btn btn-secondary btn-sm">View charts →</a>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
             <div class="model-card">
+                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📈</div>
                 <div class="model-name">Logistic Regression</div>
-                <div class="model-param-tag">max_iter=1000, C=1.0</div>
-                <p style="font-size: 0.83rem; color: var(--text-secondary);">Linear probabilistic classifier finding the optimal hyperplane via log-odds sigmoid mapping.</p>
+                <div class="model-param-tag">98.37% accuracy</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Finds the best decision boundary to separate real vs fake articles.</p>
             </div>
 
             <div class="model-card">
-                <div class="model-name">Multinomial Naive Bayes</div>
-                <div class="model-param-tag">alpha=0.5</div>
-                <p style="font-size: 0.83rem; color: var(--text-secondary);">Probabilistic model applying Bayes' theorem with feature conditional independence.</p>
+                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🎲</div>
+                <div class="model-name">Naive Bayes</div>
+                <div class="model-param-tag">94.77% accuracy</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Uses word probabilities to guess whether news is real or fake.</p>
             </div>
 
             <div class="model-card">
+                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🌳</div>
                 <div class="model-name">Decision Tree</div>
-                <div class="model-param-tag">max_depth=50</div>
-                <p style="font-size: 0.83rem; color: var(--text-secondary);">Hierarchical partitioning of TF-IDF feature space based on Gini impurity reduction.</p>
+                <div class="model-param-tag">99.27% accuracy</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Splits the data step-by-step like a yes/no flowchart.</p>
             </div>
 
             <div class="model-card">
+                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">🌲</div>
                 <div class="model-name">Random Forest</div>
-                <div class="model-param-tag">n_est=100, max_depth=50</div>
-                <p style="font-size: 0.83rem; color: var(--text-secondary);">Ensemble of 100 decorrelated decision trees using bootstrap aggregation (bagging).</p>
+                <div class="model-param-tag">99.47% accuracy</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Uses 100 decision trees and takes a majority vote among them.</p>
             </div>
 
             <div class="model-card">
+                <div style="font-size: 1.3rem; margin-bottom: 0.4rem;">📐</div>
                 <div class="model-name">Linear SVM</div>
-                <div class="model-param-tag">Linear Kernel, C=1.0</div>
-                <p style="font-size: 0.83rem; color: var(--text-secondary);">Maximum-margin hyperplane separation ideal for high-dimensional text vectors.</p>
+                <div class="model-param-tag">99.17% accuracy</div>
+                <p style="font-size: 0.82rem; color: var(--text-secondary);">Draws the widest possible line to separate real and fake classes.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Disclaimer Box -->
-<section style="margin-top: 2.5rem;">
+<!-- Disclaimer -->
+<section style="margin-top: 2rem;">
     <div class="alert-box alert-warning">
-        <span style="font-size: 1.4rem;">⚠️</span>
+        <span style="font-size: 1.3rem;">⚠️</span>
         <div>
-            <strong data-i18n="disclaimer_title">AI Veracity Disclaimer</strong>
-            <p data-i18n="disclaimer_text" style="font-size: 0.88rem; margin-top: 0.2rem;">
-                TruthLens utilizes statistical Natural Language Processing and Machine Learning models trained on historical datasets. While highly accurate, automated predictions should serve as assistive tools rather than definitive journalistic fact-checks. Note: Prediction models process English text; translations apply to the website interface.
+            <strong data-i18n="disclaimer_title">Disclaimer</strong>
+            <p data-i18n="disclaimer_text" style="font-size: 0.85rem; margin-top: 0.2rem; color: var(--text-secondary);">
+                TruthLens uses ML models trained on historical datasets. Results are highly accurate but should be used as a guide, not a definitive fact-check. The models work best with English text; language options only change the website interface.
             </p>
         </div>
     </div>
